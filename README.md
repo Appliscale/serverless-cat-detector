@@ -17,3 +17,4 @@ During that we will cover following topics:
 - *AWS Rekognition*,
 - [*Serverless Framework*](https://serverless.com),
 - *Best practices*, when it comes to development of such applications.
+
