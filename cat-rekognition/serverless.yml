@@ -1,0 +1,50 @@
+service: serverless-cat-detector
+
+provider:
+  name: aws
+  region: eu-west-1
+  profile: appliscale-dev
+  runtime: nodejs6.10
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - rekognition:*
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  catrekognition:
+    handler: src/handler.imgClassification
+    events:
+      - s3: serverless-cat-detector-img-repo
+
+resources:
+  Resources:
+    CatStatusDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: 'name'
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: 'name'
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        TableName: 'ServerlessCatDetectorStatus'
