@@ -1,0 +1,1225 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  Setting up IAM users for Serverless CatDetector workshop. That will be used
+  for creating Serverless application on top of Amazon Services, including
+  Amazon Rekognition and others.
+
+Parameters:
+
+  PASSWORD:
+    Description: >
+      Start password for a participant.
+    Type: String
+    NoEcho: true
+
+Resources:
+
+  User001:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user001"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User001Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user001"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User001Table:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user001"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User002:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user002"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User002Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user002"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User002Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User001Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user002"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User003:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user003"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User003Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user003"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User003Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User002Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user003"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User004:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user004"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User004Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user004"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User004Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User003Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user004"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User005:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user005"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User005Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user005"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User005Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User004Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user005"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User006:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user006"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User006Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user006"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User006Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User005Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user006"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User007:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user007"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User007Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user007"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User007Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User006Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user007"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User008:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user008"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User008Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user008"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User008Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User007Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user008"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User009:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user009"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User009Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user009"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User009Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User008Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user009"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User010:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user010"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User010Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user010"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User010Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User009Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user010"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User011:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user011"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User011Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user011"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User011Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User010Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user011"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User012:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user012"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User012Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user012"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User012Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User011Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user012"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User013:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user013"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User013Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user013"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User013Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User012Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user013"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User014:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user014"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User014Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user014"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User014Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User013Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user014"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User015:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user015"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User015Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user015"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User015Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User014Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user015"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User016:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user016"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User016Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user016"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User016Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User015Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user016"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User017:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user017"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User017Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user017"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User017Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User016Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user017"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User018:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user018"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User018Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user018"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User018Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User017Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user018"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User019:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user019"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User019Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user019"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User019Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User018Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user019"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User020:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user020"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User020Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user020"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User020Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User019Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user020"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User021:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user021"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User021Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user021"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User021Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User020Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user021"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User022:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user022"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User022Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user022"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User022Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User021Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user022"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User023:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user023"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User023Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user023"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User023Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User022Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user023"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User024:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user024"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User024Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user024"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User024Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User023Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user024"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User025:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user025"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User025Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user025"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User025Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User024Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user025"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User026:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user026"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User026Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user026"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User026Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User025Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user026"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User027:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user027"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User027Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user027"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User027Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User026Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user027"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User028:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user028"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User028Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user028"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User028Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User027Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user028"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User029:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user029"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User029Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user029"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User029Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User028Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user029"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User030:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user030"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User030Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user030"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User030Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User029Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user030"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User031:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user031"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User031Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user031"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User031Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User030Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user031"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+  User032:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "serverless-cat-reader-user032"
+      LoginProfile:
+        Password: !Ref "PASSWORD"
+        PasswordResetRequired: true
+
+  User032Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: "serverless-cat-reader-storage-user032"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+  User032Table:
+    Type: "AWS::DynamoDB::Table"
+    DependsOn:
+      - User031Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: S
+      KeySchema:
+        - AttributeName: "name"
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: "serverless-cat-reader-table-user032"
+      Tags:
+        - Key: Origin
+          Value: Workshop-Cloudyna-2017
+
+
+  ParticipantPolicy:
+    Type: AWS::IAM::Policy
+    DependsOn:
+      - User001
+      - User002
+      - User003
+      - User004
+      - User005
+      - User006
+      - User007
+      - User008
+      - User009
+      - User010
+      - User011
+      - User012
+      - User013
+      - User014
+      - User015
+      - User016
+      - User017
+      - User018
+      - User019
+      - User020
+      - User021
+      - User022
+      - User023
+      - User024
+      - User025
+      - User026
+      - User027
+      - User028
+      - User029
+      - User030
+      - User031
+      - User032
+    Properties:
+      Users:
+        - !Ref "User001"
+        - !Ref "User002"
+        - !Ref "User003"
+        - !Ref "User004"
+        - !Ref "User005"
+        - !Ref "User006"
+        - !Ref "User007"
+        - !Ref "User008"
+        - !Ref "User009"
+        - !Ref "User010"
+        - !Ref "User011"
+        - !Ref "User012"
+        - !Ref "User013"
+        - !Ref "User014"
+        - !Ref "User015"
+        - !Ref "User016"
+        - !Ref "User017"
+        - !Ref "User018"
+        - !Ref "User019"
+        - !Ref "User020"
+        - !Ref "User021"
+        - !Ref "User022"
+        - !Ref "User023"
+        - !Ref "User024"
+        - !Ref "User025"
+        - !Ref "User026"
+        - !Ref "User027"
+        - !Ref "User028"
+        - !Ref "User029"
+        - !Ref "User030"
+        - !Ref "User031"
+        - !Ref "User032"
+      PolicyName: "workshop-participant-policy"
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action:
+              # TODO: We need to compile list of needed permissions here:
+              - s3:*
+
+              - rekognition:DetectLabels
+              - rekognition:DetectModerationLabels
+              - rekognition:ListCollections
+
+              - dynamodb:Query
+              - dynamodb:Scan
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+            Resource: "*"
