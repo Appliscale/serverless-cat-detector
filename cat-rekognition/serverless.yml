@@ -27,9 +27,18 @@ provider:
       Action:
         - s3:*
       Resource: "*"
-    - Effect: "Allow"
+    - Effect: Allow
       Action:
-        - "rekognition:*"
+        - rekognition:*
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
       Resource: "*"
 
 # you can overwrite defaults here
@@ -104,14 +113,21 @@ functions:
 #    environment:
 #      variable2: value2
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    images:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: cat-detector-img-repo
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+resources:
+  Resources:
+    CatStatusDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: 'name'
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: 'name'
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        TableName: 'CatDetectionStatus'
