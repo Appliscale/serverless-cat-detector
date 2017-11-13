@@ -4,7 +4,7 @@
   "description": "Detecting cat in a picture",
   "main": "src/handler.js",
   "dependencies": {
-    "serverless": "^1.24.0"
+    "serverless": "1.24.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -14,5 +14,5 @@
     "test": "./node_modules/mocha/bin/mocha test"
   },
   "author": "sebastian.feduniak@appliscale.io",
-  "license": "ISC"
+  "license": "Apache-2.0"
 }

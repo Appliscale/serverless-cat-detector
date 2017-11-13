@@ -3,6 +3,8 @@ var chai = require('chai'),
     should = chai.should();
 
 const lambda = require("../src/handler.js");
+const persistence = require("../src/persistence");
+const recognition = require("../src/recognition");
 
 describe('Test processing', function () {
     it('should accept create event', function () {
@@ -35,7 +37,7 @@ describe('Test processing', function () {
             ]
         };
 
-        var isACat = lambda.isCatRecognized(rawLabels);
+        var isACat = recognition.isCatRecognized(rawLabels);
 
         expect(isACat).to.be.true;
     })
@@ -48,12 +50,25 @@ describe('Test processing', function () {
             ]
         };
 
-        var isACat = lambda.isCatRecognized(rawLabels);
+        var isACat = recognition.isCatRecognized(rawLabels);
 
         expect(isACat).to.be.false;
     })
+    it("should label an image", function () {
+        const rawLabels = {
+            'Labels': [
+                { 'Name': 'Animal', 'Confidence': 72.16043853759766 },
+                { 'Name': 'Dog', 'Confidence': 72.16043853759766 },
+                { 'Name': 'Pet', 'Confidence': 72.16043853759766 }
+            ]
+        };
+
+        var label = recognition.imageLabel(rawLabels);
+
+        expect(label).to.equal('other');
+    })
     it("should create data item", function () {
-        var newFile = lambda.dbItem('file1', false, 'new');
+        var newFile = persistence.dbItem('file1', false, 'new');
 
         expect(newFile.Item.status).to.equal('new');
     })
