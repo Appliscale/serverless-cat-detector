@@ -25,6 +25,19 @@ provider:
       Resource: "*"
 
 functions:
+  uploadcatpicture:
+    handler: src/upload.saveToS3
+    events:
+      - http:
+          path: upload
+          method: post
+          cors: true
+  getresults:
+    handler: src/results.getClassification
+    events:
+     - http:
+         path: results
+         method: get
   catrekognition:
     handler: src/handler.imgClassification
     events:

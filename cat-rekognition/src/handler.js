@@ -1,7 +1,7 @@
 'use strict';
 
 const persistence = require('./persistence');
-const recognition = require('./recognition')
+const recognition = require('./recognition');
 
 module.exports.imgClassification = (event, context, callback) => {
 

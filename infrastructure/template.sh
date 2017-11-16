@@ -19,6 +19,11 @@ cat <<EOF
     Properties:
       AccessControl: Private
       BucketName: "serverless-cat-reader-storage-user${ACTUAL}"
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ["*"]
+            AllowedMethods: ["GET", "PUT"]
+            AllowedOrigins: ["*"]
       Tags:
         - Key: Origin
           Value: Workshop-Cloudyna-2017
