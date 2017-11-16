@@ -1,6 +1,6 @@
 'use strict';
 
-const STATUS_TABLE_NAME = 'ServerlessCatDetectorStatus'
+const STATUS_TABLE_NAME = 'ServerlessCatDetectorStatus';
 
 const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
@@ -24,3 +24,24 @@ module.exports.putStatus = (fileName, scanned, scanningStatus) => {
         else     console.log(data);
     });
 };
+
+module.exports.getStatus = (fileName) => {
+    const params = {
+        TableName: STATUS_TABLE_NAME,
+        Key: {
+            "name": fileName
+        },
+        AttributesToGet: ["checked", "status"]
+    };
+
+    return new Promise((resolve, reject) => {
+        dynamoDb.get(params, function (err, data) {
+            if (err) {
+                return reject(new Error(err));
+            } else {
+                console.log(data);
+                return resolve(data.Item);
+            }
+        });
+    });
+}
