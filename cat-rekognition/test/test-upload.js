@@ -4,6 +4,7 @@ var chai = require('chai'),
 var sinon = require('sinon');
 
 const lambda = require("../src/upload.js");
+const CORS_HEADERS = { 'Access-Control-Allow-Origin': '*' };
 
 describe('Test upload', function () {
     it('accepts valid http event', function () {
