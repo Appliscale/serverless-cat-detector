@@ -1,5 +1,5 @@
-var API_UPLOAD_ENDPOINT = "https://2hopkcji61.execute-api.eu-west-1.amazonaws.com/dev/upload"
-var API_RESULTS_ENDPOINT = "https://2hopkcji61.execute-api.eu-west-1.amazonaws.com/dev/results"
+var API_UPLOAD_ENDPOINT = "<your upload endpoint>"
+var API_RESULTS_ENDPOINT = "<your results endpoint>"
 
 document.getElementById("detect").onclick = function() {
   var reader = new FileReader();
