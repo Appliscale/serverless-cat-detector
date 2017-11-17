@@ -83,3 +83,11 @@ resources:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
         TableName: 'ServerlessCatDetectorStatus'
+
+plugins:
+  - serverless-s3-remover
+
+custom:
+  remover:
+    buckets:
+      - serverless-cat-detector-img-repo
