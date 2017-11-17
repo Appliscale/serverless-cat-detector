@@ -40,11 +40,33 @@ functions:
          method: get
   catrekognition:
     handler: src/handler.imgClassification
-    events:
-      - s3: serverless-cat-detector-img-repo
 
 resources:
   Resources:
+    S3BucketServerlessDashCatDashDetectorDashImgDashRepo:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: serverless-cat-detector-img-repo
+        NotificationConfiguration:
+          LambdaConfigurations:
+            - Event:  "s3:ObjectCreated:*"
+              Function:
+                "Fn::GetAtt": [CatrekognitionLambdaFunction, Arn]
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ["*"]
+              AllowedMethods: ["GET", "PUT"]
+              AllowedOrigins: ["*"]
+    CatrekognitionLambdaPermissionS3BucketMyBucketDevS3:
+      DependsOn:
+        - CatrekognitionLambdaFunction
+      Type: AWS::Lambda::Permission
+      Properties:
+        FunctionName:
+          "Fn::GetAtt": [ CatrekognitionLambdaFunction, Arn ]
+        Action: "lambda:InvokeFunction"
+        Principal: "s3.amazonaws.com"
+        SourceArn: "arn:aws:s3:::serverless-cat-detector-img-repo"
     CatStatusDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
