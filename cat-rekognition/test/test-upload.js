@@ -11,7 +11,7 @@ describe('Test upload', function () {
         const expectedContentType = "application/json; charset=utf-8";
         const validEvent = {
             headers: {'content-type': expectedContentType},
-            'body': '{"name":"kot3.jpg","type":"image/jpeg"}'
+            body: '{"name":"kot3.jpg","type":"image/jpeg"}'
         };
         const successCb = sinon.spy(); 
         const errorCb = sinon.spy(); 
@@ -24,7 +24,7 @@ describe('Test upload', function () {
     it('reject invalid content type', function () {
         const event = {
             headers: {'content-type': "image/png"},
-            'body': '{"name":"kot3.jpg","type":"image/jpeg"}',
+            body: '{"name":"kot3.jpg","type":"image/jpeg"}',
         };
         const successCb = sinon.spy(); 
         const errorCb = sinon.spy(); 
@@ -37,7 +37,7 @@ describe('Test upload', function () {
     it('reject request without type param', function () {
         const event = {
             headers: {'content-type': "application/json"},
-            'body': '{"name": "asdas"}'
+            body: '{"name": "asdas"}'
         };
         const successCb = sinon.spy(); 
         const errorCb = sinon.spy(); 
@@ -50,7 +50,7 @@ describe('Test upload', function () {
     it('rejects request without name param', function () {
         const event = {
             headers: {'content-type': "application/json"},
-            'body': '{"type": "asdas"}'
+            body: '{"type": "asdas"}'
         };
         const successCb = sinon.spy(); 
         const errorCb = sinon.spy(); 
@@ -70,7 +70,7 @@ describe('Test upload', function () {
         AllowedTypes.forEach((item, index, arr) => {
             const event = { 
                 headers: {'content-type': "application/json"},
-                'body': '{"type": "'+ item +'", "name": "cat"}'
+                body: '{"type": "'+ item +'", "name": "cat"}'
             };
             const successCb = sinon.spy(); 
             const errorCb = sinon.spy(); 
@@ -90,7 +90,7 @@ describe('Test upload', function () {
         NotAllowedTypes.forEach((item, index, arr) => {
             const event = { 
                 headers: {'content-type': "application/json"},
-                'body': '{"type": "'+ item +'", "name": "cat"}'
+                body: '{"type": "'+ item +'", "name": "cat"}'
             };
             const successCb = sinon.spy(); 
             const errorCb = sinon.spy(); 
