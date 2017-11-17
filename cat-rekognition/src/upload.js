@@ -43,7 +43,7 @@ module.exports.validateInput = (event, onSuccessCb, onErrorCb) => {
   if (typeof event.headers['content-type'] === 'undefined' || !event.headers['content-type']) {
     onErrorCb("content-type is missing");
     return;
-  } else
+  }
 
   if (!event.headers['content-type'].startsWith("application/json")) {
     onErrorCb("content type is not application/json");
