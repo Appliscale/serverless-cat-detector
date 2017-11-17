@@ -25,22 +25,19 @@ module.exports.putStatus = (fileName, scanned, scanningStatus) => {
     });
 };
 
-module.exports.getStatus = (fileName) => {
+module.exports.getStatusOfAll = () => {
     const params = {
         TableName: STATUS_TABLE_NAME,
-        Key: {
-            "name": fileName
-        },
-        AttributesToGet: ["checked", "status"]
+        AttributesToGet: ["name", "checked", "status"]
     };
 
     return new Promise((resolve, reject) => {
-        dynamoDb.get(params, function (err, data) {
+        dynamoDb.scan(params, function (err, data) {
             if (err) {
                 return reject(new Error(err));
             } else {
                 console.log(data);
-                return resolve(data.Item);
+                return resolve(data.Items);
             }
         });
     });

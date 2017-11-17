@@ -23,7 +23,6 @@ document.getElementById("detect").onclick = function() {
         processData: false,
         success: function(response) {
           console.log("successfuly uploaded");
-          $("#postId").val(file.name);
           $("#detect").prop("value", "Detect it!");
         }
       });
@@ -36,22 +35,21 @@ document.getElementById("detect").onclick = function() {
 };
 
 document.getElementById("searchButton").onclick = function() {
-  var fileName = $("#postId").val();
-
   $.ajax({
-    url: API_RESULTS_ENDPOINT + "?name=" + fileName,
+    url: API_RESULTS_ENDPOINT,
     type: "GET",
     success: function (data) {
       $("#posts tr").slice(1).remove();
-      result = data["result"];
 
-      $("#posts").append(
-        "<tr>" +
-        "<td>" + data["id"] + "</td>" +
-        "<td> <img height=\"200\" src=\"" + data["imageUrl"] + "\"/></td>" +
-        "<td>" + data["status"] + "</td>" +
-        "<td>" + result + "</td>" +
-        "</tr>");
+      data.forEach(element => {
+        $("#posts").append(
+          "<tr>" +
+          "<td>" + element["name"] + "</td>" +
+          "<td> <img height=\"200\" src=\"" + element["imageUrl"] + "\"/></td>" +
+          "<td>" + element["checked"] + "</td>" +
+          "<td>" + element["status"] + "</td>" +
+          "</tr>");
+      });
       },
       error: function (error) {
         console.error("Unexpected error: %j", error);
