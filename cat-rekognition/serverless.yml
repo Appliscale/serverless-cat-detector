@@ -5,6 +5,7 @@ provider:
   region: eu-west-1
   profile: appliscale-dev
   runtime: nodejs6.10
+  tracing: true
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -22,6 +23,10 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - xray:*
       Resource: "*"
 
 functions:
@@ -69,7 +74,6 @@ resources:
         SourceArn: "arn:aws:s3:::serverless-cat-detector-img-repo"
     CatStatusDbTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
       Properties:
         AttributeDefinitions:
           -
@@ -86,6 +90,7 @@ resources:
 
 plugins:
   - serverless-s3-remover
+  - serverless-plugin-tracing
 
 custom:
   remover:

@@ -2,7 +2,8 @@
 
 const STATUS_TABLE_NAME = 'ServerlessCatDetectorStatus';
 
-const AWS = require('aws-sdk');
+const AWSXRay = require('aws-xray-sdk');
+const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.dbItem = (fileName, scanned, scanningStatus) => {
