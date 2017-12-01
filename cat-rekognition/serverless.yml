@@ -51,7 +51,7 @@ resources:
     S3BucketServerlessDashCatDashDetectorDashImgDashRepo:
       Type: 'AWS::S3::Bucket'
       Properties:
-        BucketName: serverless-cat-detector-img-repo
+        BucketName: ${self:custom.catDetectorConfig.serverless_cat_detector_img_repo}
         NotificationConfiguration:
           LambdaConfigurations:
             - Event:  "s3:ObjectCreated:*"
@@ -71,7 +71,7 @@ resources:
           "Fn::GetAtt": [ CatrekognitionLambdaFunction, Arn ]
         Action: "lambda:InvokeFunction"
         Principal: "s3.amazonaws.com"
-        SourceArn: "arn:aws:s3:::serverless-cat-detector-img-repo"
+        SourceArn: "arn:aws:s3:::${self:custom.catDetectorConfig.serverless_cat_detector_img_repo}"
     CatStatusDbTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
@@ -93,6 +93,7 @@ plugins:
   - serverless-plugin-tracing
 
 custom:
+  catDetectorConfig: ${file(src/config.js)}
   remover:
     buckets:
       - serverless-cat-detector-img-repo

@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('./config');
 const AWSXRay = require('aws-xray-sdk');
 const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const rekognition = new AWS.Rekognition();
@@ -8,7 +9,7 @@ module.exports.check = (fileName) => {
     const params = {
         Image: {
             S3Object: {
-                Bucket: "serverless-cat-detector-img-repo",
+                Bucket: config().serverless_cat_detector_img_repo,
                 Name: fileName
             }
         },

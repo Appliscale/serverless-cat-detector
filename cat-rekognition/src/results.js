@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('./config');
 const persistence = require('./persistence');
 const CORS_HEADERS = { 'Access-Control-Allow-Origin': '*' };
 
@@ -11,7 +12,7 @@ module.exports.getClassification = (event, context, callback) => {
     var results = Items.map((i) => {
       return {
         name: i.name,
-        imageUrl: "https://s3-eu-west-1.amazonaws.com/serverless-cat-detector-img-repo/" + i.name,
+        imageUrl: "https://s3-eu-west-1.amazonaws.com/" + config().serverless_cat_detector_img_repo + "/" + i.name,
         status: i.status,
         checked: getChecked(i)
       };

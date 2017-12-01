@@ -1,18 +1,18 @@
 'use strict';
 
+const config = require('./config');
 const AWSXRay = require('aws-xray-sdk');
 const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const s3 = new AWS.S3();
 
 const CORS_HEADERS = { 'Access-Control-Allow-Origin': '*' };
-const BUCKET = 'serverless-cat-detector-img-repo';
 
 module.exports.saveToS3 = (event, context, callback) => {
   console.log(event);
 
   var validInput = (params) => {
     const s3Params = {
-      Bucket: BUCKET,
+      Bucket: config().serverless_cat_detector_img_repo,
       Key: params.name,
       ContentType: params.type,
       ACL: 'public-read'
