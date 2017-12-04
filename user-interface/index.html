@@ -10,6 +10,10 @@
     <main class="main">
       <h1>Serverless Cat Detector</h1>
 
+      <div id="error-box" class="error-box hidden">
+        <strong>Error!</strong> <span id="error-content"></span>
+      </div>
+
       <header class="operations">
         <div class="left">
           <input type="button" id="searchButton" class="buttons" value="Fetch Results" />
@@ -38,25 +42,7 @@
             <th>File</th>
             <th>Image</th>
             <th>Status</th>
-            <th>Result</th>
-          </tr>
-          <tr>
-            <td>Horseshoe Bend.jpg</td>
-            <td><img height="200" src="http://via.placeholder.com/350x150" /></td>
-            <td>detected</td>
-            <td>false</td>
-          </tr>
-          <tr>
-            <td>Horseshoe Bend.jpg</td>
-            <td><img height="200" src="http://via.placeholder.com/350x150" /></td>
-            <td>detected</td>
-            <td>false</td>
-          </tr>
-          <tr>
-            <td>Horseshoe Bend.jpg</td>
-            <td><img height="200" src="http://via.placeholder.com/350x150" /></td>
-            <td>detected</td>
-            <td>false</td>
+            <th>Cat?</th>
           </tr>
         </tbody>
       </table>

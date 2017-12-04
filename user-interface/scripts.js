@@ -4,6 +4,23 @@
   const API_UPLOAD_ENDPOINT = "<your upload endpoint>"
   const API_RESULTS_ENDPOINT = "<your results endpoint>"
 
+  var ErrorTimeoutId = 0;
+
+  function showError(message) {
+    if (ErrorTimeoutId > 0) {
+      clearTimeout(ErrorTimeoutId);
+    }
+
+    $("#error-content").text(message);
+    $("#error-box").removeClass("hidden");
+
+    ErrorTimeoutId = setTimeout(function () {
+      $("#error-box").addClass("hidden");
+
+      ErrorTimeoutId = 0;
+    }, 5000);
+  }
+
   document.getElementById("detect").onclick = function (event) {
     event.preventDefault();
 
@@ -11,6 +28,7 @@
     var file = $("#image")[0].files[0];
 
     if (!file) {
+      showError("You have not selected any file.");
       return;
     }
 
@@ -38,12 +56,20 @@
 
           success: function (response) {
             $("#detect").prop("value", "Submit").removeAttr("disabled");
+          },
+
+          error: function (error) {
+            console.error("Unexpected error: ", error);
+            showError("Upload failed.");
+
+            $("#detect").prop("value", "Submit").removeAttr("disabled");
           }
         });
       },
 
       error: function (error) {
         console.error("Unexpected error: ", error);
+        showError("Upload link generation failed.");
 
         $("#detect").prop("value", "Submit").removeAttr("disabled");
       }
@@ -76,6 +102,7 @@
 
       error: function (error) {
         console.error("Unexpected error: ", error);
+        showError("Could not fetch any results from the back-end.");
       }
     });
   };
