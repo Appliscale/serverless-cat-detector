@@ -94,4 +94,4 @@ custom:
   catDetectorConfig: ${file(src/config.js)}
   remover:
     buckets:
-      - serverless-cat-detector-img-repo
+      - ${self:custom.catDetectorConfig.serverless_cat_detector_img_repo}
