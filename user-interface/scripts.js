@@ -84,12 +84,12 @@
       type: "GET",
 
       success: function (data) {
-        $("#posts tr").slice(1).remove();
+        $(".results tr").slice(1).remove();
 
         data.forEach(element => {
           var image = "<img height=\"200\" src=\"" + element["imageUrl"] + "\"/>";
 
-          $("#posts").append(
+          $(".results").append(
             "<tr>" +
               "<td>" + element["name"] + "</td>" +
               "<td>" + image + "</td>" +
