@@ -44,7 +44,7 @@ functions:
          path: results
          method: get
   catrekognition:
-    handler: src/handler.imgClassification
+    handler: src/classification.imgClassification
 
 resources:
   Resources:
@@ -84,7 +84,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
-        TableName: 'ServerlessCatDetectorStatus'
+        TableName: "${self:custom.catDetectorConfig.serverless_cat_detector_results_table}"
 
 plugins:
   - serverless-s3-remover
