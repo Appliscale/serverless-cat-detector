@@ -1,14 +1,13 @@
 'use strict';
 
-const STATUS_TABLE_NAME = 'ServerlessCatDetectorStatus';
-
+const config = require('./config');
 const AWSXRay = require('aws-xray-sdk');
 const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.dbItem = (fileName, scanned, scanningStatus) => {
     return {
-        TableName: STATUS_TABLE_NAME,
+        TableName: config().serverless_cat_detector_results_table,
         Item: {
             'name': fileName,
             'checked': scanned,
@@ -28,7 +27,7 @@ module.exports.putStatus = (fileName, scanned, scanningStatus) => {
 
 module.exports.getStatusOfAll = () => {
     const params = {
-        TableName: STATUS_TABLE_NAME,
+        TableName: config().serverless_cat_detector_results_table,
         AttributesToGet: ["name", "checked", "status"]
     };
 
