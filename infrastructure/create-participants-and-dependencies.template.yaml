@@ -15,348 +15,350 @@ Parameters:
 
 Resources:
 
+  ParticipantGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: serverless-cat-detector-cloudyna2017-participants
+      Policies:
+        - PolicyName: serverless-cat-detector-cloudyna2017-participant-policy
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:*
+                  - rekognition:*
+                  - dynamodb:*
+                  - lambda:*
+                  - xray:*
+                  - cloudwatch:*
+                  - logs:*
+                  - iam:*
+                  - apigateway:*
+                  - execute-api:*
+
+                  - sns:*
+                  - tag:*
+                  - kms:ListAliases
+                  - cloudformation:DescribeStackResources
+                Resource: "*"
+
   User001:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user001"
+      UserName: serverless-cat-detector-user001
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User002:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user002"
+      UserName: serverless-cat-detector-user002
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User003:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user003"
+      UserName: serverless-cat-detector-user003
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User004:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user004"
+      UserName: serverless-cat-detector-user004
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User005:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user005"
+      UserName: serverless-cat-detector-user005
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User006:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user006"
+      UserName: serverless-cat-detector-user006
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User007:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user007"
+      UserName: serverless-cat-detector-user007
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User008:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user008"
+      UserName: serverless-cat-detector-user008
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User009:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user009"
+      UserName: serverless-cat-detector-user009
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User010:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user010"
+      UserName: serverless-cat-detector-user010
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User011:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user011"
+      UserName: serverless-cat-detector-user011
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User012:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user012"
+      UserName: serverless-cat-detector-user012
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User013:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user013"
+      UserName: serverless-cat-detector-user013
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User014:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user014"
+      UserName: serverless-cat-detector-user014
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User015:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user015"
+      UserName: serverless-cat-detector-user015
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User016:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user016"
+      UserName: serverless-cat-detector-user016
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User017:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user017"
+      UserName: serverless-cat-detector-user017
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User018:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user018"
+      UserName: serverless-cat-detector-user018
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User019:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user019"
+      UserName: serverless-cat-detector-user019
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User020:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user020"
+      UserName: serverless-cat-detector-user020
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User021:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user021"
+      UserName: serverless-cat-detector-user021
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User022:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user022"
+      UserName: serverless-cat-detector-user022
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User023:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user023"
+      UserName: serverless-cat-detector-user023
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User024:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user024"
+      UserName: serverless-cat-detector-user024
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User025:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user025"
+      UserName: serverless-cat-detector-user025
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User026:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user026"
+      UserName: serverless-cat-detector-user026
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User027:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user027"
+      UserName: serverless-cat-detector-user027
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User028:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user028"
+      UserName: serverless-cat-detector-user028
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User029:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user029"
+      UserName: serverless-cat-detector-user029
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User030:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user030"
+      UserName: serverless-cat-detector-user030
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User031:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user031"
+      UserName: serverless-cat-detector-user031
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
   User032:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user032"
+      UserName: serverless-cat-detector-user032
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
-  ParticipantPolicy:
-    Type: AWS::IAM::Policy
-    DependsOn:
-      - User001
-      - User002
-      - User003
-      - User004
-      - User005
-      - User006
-      - User007
-      - User008
-      - User009
-      - User010
-      - User011
-      - User012
-      - User013
-      - User014
-      - User015
-      - User016
-      - User017
-      - User018
-      - User019
-      - User020
-      - User021
-      - User022
-      - User023
-      - User024
-      - User025
-      - User026
-      - User027
-      - User028
-      - User029
-      - User030
-      - User031
-      - User032
-    Properties:
-      Users:
-        - !Ref "User001"
-        - !Ref "User002"
-        - !Ref "User003"
-        - !Ref "User004"
-        - !Ref "User005"
-        - !Ref "User006"
-        - !Ref "User007"
-        - !Ref "User008"
-        - !Ref "User009"
-        - !Ref "User010"
-        - !Ref "User011"
-        - !Ref "User012"
-        - !Ref "User013"
-        - !Ref "User014"
-        - !Ref "User015"
-        - !Ref "User016"
-        - !Ref "User017"
-        - !Ref "User018"
-        - !Ref "User019"
-        - !Ref "User020"
-        - !Ref "User021"
-        - !Ref "User022"
-        - !Ref "User023"
-        - !Ref "User024"
-        - !Ref "User025"
-        - !Ref "User026"
-        - !Ref "User027"
-        - !Ref "User028"
-        - !Ref "User029"
-        - !Ref "User030"
-        - !Ref "User031"
-        - !Ref "User032"
-      PolicyName: "serverless-cat-detector-cloudyna2017-participant-policy"
-      PolicyDocument:
-        Statement:
-          - Effect: Allow
-            Action:
-              - s3:*
-              - rekognition:*
-              - dynamodb:*
-              - lambda:*
-              - xray:*
-              - cloudwatch:*
-              - iam:*
-              - apigateway:*
-              - execute-api:*
-
-              - sns:*
-              - tag:*
-              - kms:ListAliases
-              - cloudformation:DescribeStackResources
-            Resource: "*"

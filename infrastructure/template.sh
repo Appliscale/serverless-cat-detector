@@ -9,9 +9,11 @@ cat <<EOF
   User${ACTUAL}:
     Type: AWS::IAM::User
     Properties:
-      UserName: "serverless-cat-detector-user${ACTUAL}"
+      UserName: serverless-cat-detector-user${ACTUAL}
       LoginProfile:
-        Password: !Ref "PASSWORD"
+        Password: !Ref PASSWORD
         PasswordResetRequired: true
+      Groups:
+        - !Ref ParticipantGroup
 
 EOF
